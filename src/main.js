@@ -6,11 +6,11 @@ const app = document.querySelector('#app');
 
 const TIPS = {
   cognitive:
-    'Вы хорошо защищены от красивых обещаний. Одна тонкость: иногда за слабым текстом скрывается толковая вещь — дайте шанс рекламе, которая зацепила не логикой, а чувством, и уже потом проверяйте факты.',
+    'Вы хорошо защищены от красивых обещаний. Одна тонкость: иногда рекламу, которая зацепила вас не логикой, а чувством, откладывают в сторону, хотя за ней стоит толковая вещь. Дайте ей шанс — и уже потом проверяйте факты.',
   emotional:
     'Эмоции — точный компас, но и удобный крючок. Если хочется купить «на настроении», сделайте паузу на сутки: осталось желание — значит, это было про вас, а не про ролик.',
   motivational:
-    'Вы рациональны, и это экономит ресурсы. Следите только за обратной ловушкой: погоня за выгодой иногда заставляет покупать то, что вам не нужно. Спрашивайте себя не «насколько выгодно?», а «нужно ли мне это вообще?».',
+    'Вы рациональны, и это экономит ресурсы. Следите только за обратной ловушкой: погоня за выгодой иногда заставляет покупать то, что вам не нужно. Спрашивайте себя не только о том, насколько это выгодно, но и о том, нужно ли вам это вообще.',
   social:
     'Вы тонко чувствуете людей и тренды. Время от времени проверяйте: купили бы вы это, если бы об этом никто не узнал? Ответ помогает отделить своё желание от ожиданий окружения.',
 };
@@ -119,10 +119,9 @@ function questionScreen() {
   const i = state.index;
   const q = QUESTIONS[i];
   const answer = state.answers[i];
-  const answered = state.answers.filter((a) => a !== null).length;
 
   return `
-    ${topline({ progress: { answered, total, percent: Math.round((answered / total) * 100) } })}
+    ${topline({ progress: { answered: i + 1, total, percent: Math.round(((i + 1) / total) * 100) } })}
     <main class="screen">
       <div class="q-head">
         <span class="q-count"><strong>Вопрос ${i + 1}</strong> из ${total}</span>
@@ -178,7 +177,7 @@ function resultScreen() {
         <span class="result-eyebrow">Ваш результат</span>
 
         <section class="type-block" style="--type-color:${lead.color};--type-soft:${lead.soft}">
-          <span class="type-number">АСПЕКТ ${lead.number}</span>
+          <span class="type-number">Аспект ${lead.number}</span>
           <h1 class="type-name">${esc(lead.title)}</h1>
           <p class="type-tagline">${esc(lead.tagline)}</p>
           <p class="type-desc">${esc(lead.description)}</p>

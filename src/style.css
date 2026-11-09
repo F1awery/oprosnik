@@ -1,13 +1,23 @@
 :root {
-  --bg: #fbfaf7;
-  --ink: #141516;
-  --ink-2: #4b4e52;
-  --muted: #8b8d91;
-  --line: #e5e2da;
-  --card: #ffffff;
-  --accent: #141516;
+  /* Палитра из референса */
+  --yale: #0f3b59;      /* Yale Blue — основной текст, кнопки */
+  --steel: #7d929e;     /* Cool Steel — второстепенный текст */
+  --dust: #dbd4cc;      /* Dust Grey — линии, рамки */
+  --gold: #dba12c;      /* Goldenrod — акцент */
+  --coffee: #3e251e;    /* Dark Coffee — глубокий текст */
+
+  /* Производные */
+  --bg: #f7f4ef;        /* тёплый светлый фон под палитру */
+  --ink: var(--yale);
+  --ink-2: #4a6574;
+  --muted: var(--steel);
+  --line: #e4ddd5;
+  --card: #fffdfa;
+  --gold-deep: #8a6320; /* затемнённый Goldenrod для мелкого текста */
+  --accent: var(--gold);
+
   --radius: 22px;
-  --shadow: 0 1px 2px rgba(20, 21, 22, 0.04), 0 12px 40px -18px rgba(20, 21, 22, 0.18);
+  --shadow: 0 1px 2px rgba(62, 37, 30, 0.03), 0 12px 40px -18px rgba(62, 37, 30, 0.14);
   --font: 'Inter', 'SF Pro Display', 'Suisse Intl', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
@@ -40,8 +50,8 @@ body::before {
   inset: -30vh 0 auto auto;
   width: 80vw;
   height: 70vh;
-  background: radial-gradient(closest-side, rgba(27, 63, 160, 0.07), transparent 70%),
-    radial-gradient(closest-side at 80% 20%, rgba(194, 37, 92, 0.06), transparent 70%);
+  background: radial-gradient(closest-side, rgba(219, 161, 44, 0.13), transparent 72%),
+    radial-gradient(closest-side at 80% 20%, rgba(15, 59, 89, 0.07), transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -92,7 +102,7 @@ body::before {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ink);
+  background: var(--gold);
 }
 
 .progress-wrap {
@@ -117,7 +127,7 @@ body::before {
   height: 100%;
   width: 0;
   border-radius: 99px;
-  background: var(--ink);
+  background: var(--gold);
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -247,15 +257,15 @@ h1 {
   letter-spacing: -0.01em;
   padding: 15px 26px;
   border-radius: 99px;
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--yale);
+  color: #fff;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  box-shadow: 0 10px 26px -14px rgba(20, 21, 22, 0.55);
+  box-shadow: 0 10px 24px -14px rgba(15, 59, 89, 0.45);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 30px -16px rgba(20, 21, 22, 0.6);
+  box-shadow: 0 16px 30px -16px rgba(15, 59, 89, 0.5);
 }
 
 .btn:active {
@@ -341,7 +351,7 @@ h1 {
 }
 
 .option:hover {
-  border-color: #c9c5ba;
+  border-color: var(--dust);
   transform: translateX(2px);
 }
 
@@ -350,7 +360,7 @@ h1 {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1.5px solid #cfccc4;
+  border: 1.5px solid #cfc6bb;
   display: grid;
   place-items: center;
   transition: border-color 0.16s ease, background 0.16s ease;
@@ -366,13 +376,13 @@ h1 {
 }
 
 .option[aria-checked='true'] {
-  border-color: var(--ink);
-  background: #fff;
-  box-shadow: inset 0 0 0 1px var(--ink);
+  border-color: var(--gold);
+  background: #fffcf4;
+  box-shadow: inset 0 0 0 1px rgba(219, 161, 44, 0.3);
 }
 
 .option[aria-checked='true'] .dot {
-  border-color: var(--ink);
+  border-color: var(--gold);
 }
 
 .option[aria-checked='true'] .dot::after {
@@ -386,7 +396,7 @@ h1 {
 .option .num {
   margin-left: auto;
   font-size: 12px;
-  color: #b6b3ab;
+  color: #bdb3a6;
   font-variant-numeric: tabular-nums;
 }
 
@@ -460,7 +470,7 @@ h1 {
   position: absolute;
   inset: 31px;
   border-radius: 50%;
-  background: var(--ink);
+  background: var(--gold);
 }
 
 @keyframes pulse {
@@ -500,12 +510,12 @@ h1 {
   border-radius: var(--radius);
   color: var(--ink);
   background: var(--type-soft, #eee);
-  border: 1px solid rgba(20, 21, 22, 0.06);
+  border: 1px solid rgba(26, 28, 30, 0.07);
 }
 
 .type-number {
   font-size: 12px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   color: var(--type-color, #333);
   font-weight: 700;
 }
@@ -530,7 +540,7 @@ h1 {
   margin: 18px 0 0;
   font-size: 17px;
   line-height: 1.6;
-  color: #23252a;
+  color: #2a3d49;
   text-wrap: pretty;
 }
 
@@ -684,8 +694,9 @@ h1 {
   margin: 40px 0 0;
   padding: 24px;
   border-radius: var(--radius);
-  background: #16171a;
-  color: #eceae4;
+  background: #efe9e1;
+  color: #3e251e;
+  border: 1px solid var(--line);
 }
 
 .tip-block h3 {
@@ -693,7 +704,7 @@ h1 {
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #a9a7a0;
+  color: #8a6320;
   font-weight: 600;
 }
 
@@ -701,7 +712,7 @@ h1 {
   margin: 10px 0 0;
   font-size: 16px;
   line-height: 1.6;
-  color: #dedbd3;
+  color: #3e251e;
 }
 
 .result-actions {
@@ -815,6 +826,6 @@ h1 {
 @media (hover: hover) and (min-width: 561px) {
   .q-foot .hint::after {
     content: ' · можно клавишами 1–5';
-    color: #b6b3ab;
+    color: #bdb3a6;
   }
 }
